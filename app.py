@@ -151,4 +151,4 @@ def see_history():
 
 if __name__ == '__main__':
     init_db()  # Initialize the database when the app starts
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
