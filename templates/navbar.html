@@ -1,0 +1,47 @@
+<header style="width: 100%;">
+    <nav style="display: flex; justify-content: space-between; align-items: center; background-color: #4CAF50; padding: 10px 20px; position: relative;">
+        <div class="logo" style="flex: 1;">
+            <a href="/" style="font-size: 24px; color: white; text-decoration: none;">Enjoy and Learn</a>
+        </div>
+        <ul class="nav-links" style="list-style: none; margin: 0; padding: 0; position: absolute; left: 50%; transform: translateX(-50%);">
+            <li style="display: inline;">
+                <a href="/" style="color: white; text-decoration: none; font-size: 18px;">Home</a>
+            </li>
+            <li style="display: inline;">
+                <a href="/history" style="color: white; text-decoration: none; font-size: 18px; margin: 0 20px;">History</a>
+            </li>
+        </ul>
+        <ul class="nav-links-right" style="list-style: none; margin: 0; padding: 0; flex: 1; display: flex; justify-content: flex-end;">
+            <li style="display: inline;">
+                <a href="/learn" style="color: white; text-decoration: none; font-size: 18px; margin-right: 20px;">Learn</a>
+            </li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu" style="display: none; flex-direction: column; cursor: pointer;">
+            <span style="width: 25px; height: 3px; background-color: white; margin: 4px 0; transition: all 0.3s ease;"></span>
+            <span style="width: 25px; height: 3px; background-color: white; margin: 4px 0; transition: all 0.3s ease;"></span>
+            <span style="width: 25px; height: 3px; background-color: white; margin: 4px 0; transition: all 0.3s ease;"></span>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links-right');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        function handleResize() {
+            if (window.innerWidth <= 768) {
+                navLinks.style.display = 'none';
+                mobileMenu.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'flex';
+                mobileMenu.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('resize', handleResize);
+        window.addEventListener('load', handleResize);
+    </script>
+</header>

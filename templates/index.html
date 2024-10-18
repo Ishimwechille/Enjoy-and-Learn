@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+    
+    <title>Enjoy and Learn</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .upper-section {
+            height: 50vh;
+            background-image: url('../static/assets/img/mic.jpg'); /* Replace 'your-image.jpg' with your image path */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .upper-section div {
+            background: rgba(0, 0, 0, 0.5); /* Optional: To make text stand out */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .middle-section {
+            padding: 50px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .lower-section {
+            padding: 50px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+        .middle-section {
+        padding: 50px;
+        background-color: #f4f4f4;
+        text-align: center;
+    }
+
+    .card-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+    }
+
+    .card {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 30%;
+        text-align: left;
+    }
+
+    .card h3 {
+        margin-top: 0;
+    }
+
+    /* Responsive layout for smaller screens */
+    @media (max-width: 768px) {
+        .card-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+    }
+    .lower-section {
+        padding: 50px;
+        background-color: #333;
+        color: white;
+        text-align: center;
+    }
+
+    .lower-section p {
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    .profile-picture img {
+        width: 150px; /* Adjust this size as needed */
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    .social-links a {
+        color: #4CAF50;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+
+    .social-links a:hover {
+        text-decoration: underline;
+    }
+    .footer {
+        background-color: #222;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        font-size: 14px;
+    }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <section class="upper-section">
+        <div>
+            <h1>Welcome to Enjoy and Learn</h1>
+            <p>Learning made fun and interactive for everyone!</p>
+            <a href="/learn">Learn More</a>
+        </div>
+    </section>
+
+    <section class="middle-section">
+        <h2>About Us</h2>
+        <p>
+            Welcome to <strong>Enjoy and Learn</strong> – a platform where education meets entertainment! 
+            We believe that learning should be fun and engaging. Our goal is to provide a space where users 
+            can explore new knowledge while having fun with interactive resources, videos, and exciting challenges.
+        </p>
+        <p>
+            Whether you're looking to master a new skill, dive into educational content, or just enjoy a unique 
+            learning experience, <strong>Enjoy and Learn</strong> is designed to make your journey enjoyable. 
+            We offer a wide range of subjects to explore, from science and math to creative arts and beyond.
+        </p>
+        <div class="card-container">
+            <div class="card">
+                <h3>Explore</h3>
+                <p>Browse through a wide range of subjects, from science to arts. Discover topics that interest you with engaging content.</p>
+            </div>
+            <div class="card">
+                <h3>Learn</h3>
+                <p>Access interactive lessons, videos, and quizzes. Our resources are designed to make learning both informative and fun.</p>
+            </div>
+            <div class="card">
+                <h3>Enjoy</h3>
+                <p>Complete challenges, earn rewards, and enjoy the process of learning at your own pace, while having fun!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="lower-section">
+        <h2>About the Developer</h2>
+    
+    <!-- Developer's Profile Picture -->
+    <div class="profile-picture">
+        <img src="../static/assets/img/profile.png" alt="Developer's Profile Picture">
+    </div>
+    
+    <p>
+        Hi, I'm [Your Name], the creator of <strong>Enjoy and Learn</strong>. I am passionate about making learning more 
+        accessible and enjoyable for everyone. With a background in web development and educational technology, I aim 
+        to build platforms that merge education with entertainment, helping users gain knowledge in fun and interactive ways.
+    </p>
+    
+    <div class="social-links">
+        <p>Connect with me on:</p>
+        <a href="https://github.com/your-github" target="_blank">GitHub</a> |
+        <a href="tel:+1234567890">Call</a> |
+        <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
+        <a href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+    </div>
+    </section>
+    <footer class="footer">
+        <p>&copy; <span id="current-year"></span> Enjoy and Learn. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // JavaScript to dynamically update the current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
