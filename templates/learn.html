@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enjoy and Learn</title>
+
+    <!-- Link to the CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Inline CSS for the page styling -->
     <style>
+        /* Basic styling for the page layout */
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -29,6 +34,7 @@
             padding: 10px;
         }
 
+        /* Spotify search results styling */
         #spotify-results {
             list-style-type: none;
             padding: 0;
@@ -36,6 +42,7 @@
             margin-top: 10px;
         }
 
+        /* YouTube video container styling */
         #youtube-video {
             width: 100%;
             height: 315px; /* Set a fixed height for the video */
@@ -44,12 +51,14 @@
             margin-top: 20px;
         }
 
+        /* YouTube video iframe styling */
         #youtube-video iframe {
             width: 100%;
             height: 100%; /* Use the full height of the parent div */
             max-width: 560px; /* Optional: Max width for better presentation */
         }
 
+        /* Container for lyrics and word meaning */
         #lyrics-container {
             display: flex;
             justify-content: space-between;
@@ -57,6 +66,7 @@
             margin-top: 20px;
         }
 
+        /* Styling for the lyrics box */
         #lyrics {
             flex: 1;
             border: 1px solid #ccc;
@@ -66,6 +76,7 @@
             max-height: 300px; /* Optional: Limit height for better presentation */
         }
 
+        /* Styling for the word meaning box */
         #word-meaning {
             flex: 1;
             border: 1px solid #ccc;
@@ -73,6 +84,7 @@
             margin-left: 10px;
         }
 
+        /* Styling for history display */
         #history-container {
             margin-top: 20px;
         }
@@ -85,98 +97,109 @@
 </head>
 
 <body>
+    <!-- Include the navigation bar -->
     {% include 'navbar.html' %}
+    
     <h1>Search Music Enjoy and Learn</h1>
+    
+    <!-- Input field to search for songs on Spotify -->
     <div>
         <input type="text" id="song-query" placeholder="Search for a song..." />
         <button id="search-button">Search</button>
     </div>
-    
+
+    <!-- Section to display Spotify search results -->
     <h2>Search Results</h2>
     <ul id="spotify-results"></ul>
 
+    <!-- Section to display YouTube video of the song -->
     <h2>YouTube Video</h2>
     <div id="youtube-video"></div>
 
+    <!-- Section to display lyrics and word meanings -->
     <h2>Lyrics and Word Meaning</h2>
     <div id="lyrics-container">
         <div id="lyrics"></div>
         <div id="word-meaning">Click on a word in the lyrics to see its meaning.</div>
-        
     </div>
 
+    <!-- Button to see search history -->
     <button id="see-history-button"><a href="/get_history" style="text-decoration: none;">See your history</a></button>
+
+    <!-- History container to display previous search history -->
     <div id="history-container" style="display: none;">
         <h2>History</h2>
         <ul id="history-list"></ul>
     </div>
 
     <script>
+        // Function triggered when the search button is clicked
         document.getElementById('search-button').onclick = function() {
             const query = document.getElementById('song-query').value;
             fetch('/search_spotify', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `query=${encodeURIComponent(query)}`
+                body: `query=${encodeURIComponent(query)}` // Send the song query to the server
             })
             .then(response => response.json())
             .then(data => {
                 const resultsList = document.getElementById('spotify-results');
-                resultsList.innerHTML = '';
+                resultsList.innerHTML = ''; // Clear previous results
                 data.forEach(track => {
                     const li = document.createElement('li');
                     li.innerHTML = `${track.name} by ${track.artist} 
                                     <button onclick="playSong('${track.artist}', '${track.name}', '${track.youtube_search_query}')">Play</button>`;
-                    resultsList.appendChild(li);
+                    resultsList.appendChild(li); // Append each song result to the list
                 });
             });
         };
 
+        // Function to play the song on YouTube and get the lyrics
         function playSong(artist, title, query) {
-            // Hide all search results except the clicked one
             const resultsList = document.getElementById('spotify-results');
             resultsList.innerHTML = `<li>${title} by ${artist} <button onclick="playSong('${artist}', '${title}', '${query}')">Play</button></li>`;
 
-            // Play YouTube video and get lyrics
-            playOnYouTube(query);
-            getLyrics(artist, title);
+            playOnYouTube(query); // Play the YouTube video
+            getLyrics(artist, title); // Fetch and display the lyrics
         }
 
+        // Function to search and play the song's video on YouTube
         function playOnYouTube(query) {
             fetch('/search_youtube', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `query=${encodeURIComponent(query)}`
+                body: `query=${encodeURIComponent(query)}` // Send search query for YouTube
             })
             .then(response => response.json())
             .then(data => {
                 const youtubeVideoDiv = document.getElementById('youtube-video');
                 youtubeVideoDiv.innerHTML = ''; // Clear previous video
                 if (data.video_url) {
-                    // Create an iframe for the YouTube video
+                    // Create an iframe to embed the YouTube video
                     const iframe = document.createElement('iframe');
-                    iframe.src = data.video_url.replace('watch?v=', 'embed/'); // Replace the URL to use embed format
+                    iframe.src = data.video_url.replace('watch?v=', 'embed/');
                     iframe.frameBorder = "0";
                     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                     iframe.allowFullscreen = true;
-
-                    youtubeVideoDiv.appendChild(iframe); // Add iframe to the div
+                    youtubeVideoDiv.appendChild(iframe); // Display the video
                 }
             });
         }
 
+        // Function to fetch the lyrics of the song
         function getLyrics(artist, title) {
             fetch('/get_lyrics', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}`
+                body: `artist=${encodeURIComponent(artist)}&title=${encodeURIComponent(title)}` // Send artist and title for lyrics search
             })
             .then(response => response.json())
             .then(data => {
-                displayLyrics(data.lyrics);
+                displayLyrics(data.lyrics); // Display the lyrics on the screen
             });
         }
 
+        // Function to display the lyrics and make each word clickable
         function displayLyrics(lyricsText) {
             const lyricsContainer = document.getElementById('lyrics');
             lyricsContainer.innerHTML = '';  // Clear previous lyrics
@@ -185,19 +208,20 @@
             words.forEach(word => {
                 const wordElement = document.createElement('span');
                 wordElement.innerText = word + ' ';
-                wordElement.style.cursor = 'pointer';
+                wordElement.style.cursor = 'pointer'; // Make words clickable
                 wordElement.onclick = function() {
-                    fetchWordMeaning(word);
+                    fetchWordMeaning(word); // Fetch word meaning on click
                 };
-                lyricsContainer.appendChild(wordElement);
+                lyricsContainer.appendChild(wordElement); // Append word to lyrics container
             });
         }
 
+        // Function to fetch word meaning from the API
         function fetchWordMeaning(word) {
             fetch('/get_word_meaning', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `word=${encodeURIComponent(word)}`
+                body: `word=${encodeURIComponent(word)}` // Send the clicked word to the server
             })
             .then(response => response.json())
             .then(data => {
@@ -210,21 +234,20 @@
                         <textarea id="meaning-textarea" rows="4" cols="30" readonly>${meaning}</textarea>
                     </div>
                 `;
-                saveHistory(word, meaning); // Save history after fetching meaning
+                saveHistory(word, meaning); // Save the word and its meaning to history
             });
         }
 
+        // Function to save the word and meaning to history
         function saveHistory(word, meaning) {
-            const songName = document.getElementById('song-query').value; // Assume the song name is from the search input
-            const date = new Date();
-            const currentTime = date.toLocaleTimeString();
             fetch('/save_history', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: `word=${encodeURIComponent(word)}&meaning=${encodeURIComponent(meaning)}&song_name=${encodeURIComponent(songName)}&date=${date.toLocaleDateString()}&time=${currentTime}`
+                body: `word=${encodeURIComponent(word)}&meaning=${encodeURIComponent(meaning)}` // Save word and meaning
             });
         }
 
+        // Function to display search history
         document.getElementById('see-history-button').onclick = function() {
             fetch('/get_history', {
                 method: 'GET'
@@ -237,7 +260,7 @@
                 data.history.forEach(record => {
                     const li = document.createElement('li');
                     li.innerHTML = `Date: ${record.date}, Time: ${record.time}, Word Meaning: ${record.word_meaning}, Song Name: ${record.song_name}`;
-                    historyList.appendChild(li);
+                    historyList.appendChild(li); // Append each history item to the list
                 });
 
                 // Show the history container

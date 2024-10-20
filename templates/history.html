@@ -3,66 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page Title -->
     <title>Word History</title>
+
+    <!-- Internal CSS for styling the page -->
     <style>
+        /* Basic body styling for consistent font, padding, and background */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #f4f4f4; /* Light gray background */
+            color: #333; /* Dark gray text color */
         }
 
+        /* Heading styling */
         h1 {
             text-align: center;
             margin-bottom: 20px;
         }
 
+        /* Styling for the history table */
         table {
-            width: 100%;
-            border-collapse: collapse;
+            width: 100%; /* Full width table */
+            border-collapse: collapse; /* Remove gaps between table borders */
             margin: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* White background for the table */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the table */
         }
 
+        /* Styling for table cells and headers */
         th, td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #ddd; /* Light gray bottom border between rows */
         }
 
+        /* Styling for the table header */
         th {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #4CAF50; /* Green background for table headers */
+            color: white; /* White text color in headers */
         }
 
+        /* Hover effect on table rows */
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #f1f1f1; /* Light background when hovering over rows */
         }
 
+        /* Styling for the back-to-search link */
         a {
-            display: inline-block;
-            margin: 20px auto;
+            display: inline-block; /* Make the link behave like a button */
+            margin: 20px auto; /* Center the link */
             text-align: center;
-            text-decoration: none;
-            color: #4CAF50;
+            text-decoration: none; /* Remove underline from link */
+            color: #4CAF50; /* Green text color */
             font-weight: bold;
-            padding: 10px 15px;
-            border: 2px solid #4CAF50;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            padding: 10px 15px; /* Add padding around the link text */
+            border: 2px solid #4CAF50; /* Green border */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
         }
 
+        /* Hover effect for the back-to-search link */
         a:hover {
-            background-color: #4CAF50;
-            color: white;
+            background-color: #4CAF50; /* Green background on hover */
+            color: white; /* White text color on hover */
         }
     </style>
 </head>
+
 <body>
+
+    <!-- Page heading for the search history -->
     <h1>Search History</h1>
+
+    <!-- Table displaying search history -->
     <table>
+        <!-- Table header with column names -->
         <thead>
             <tr>
                 <th>Date and Time</th>
@@ -70,16 +88,24 @@
                 <th>Meaning</th>
             </tr>
         </thead>
+
+        <!-- Table body with dynamic content from search history -->
         <tbody>
             {% for entry in history %}
             <tr>
+                <!-- Entry date and time -->
                 <td>{{ entry[0] }}</td>
+                <!-- Searched word -->
                 <td>{{ entry[1] }}</td>
+                <!-- Meaning of the searched word -->
                 <td>{{ entry[2] }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- Link to go back to the search page -->
     <a href="/learn">Back to Search</a>
+
 </body>
 </html>
