@@ -40,7 +40,7 @@ Enjoy and Learn is a web application designed to enhance the music-listening exp
 ├── requirements.txt      # Dependencies
 ├── README.md             # Project README
 └── .env                  # API keys and sensitive config (not included)
-
+`````````
 Setup Instructions
 Clone the repository:
 
