@@ -30,7 +30,8 @@ Enjoy and Learn is a web application designed to enhance the music-listening exp
 ├── templates/
 │   ├── index.html        # Landing page
 │   ├── learn.html        # Main app interface
-│   └── navbar.html       # Navigation bar component
+│   └── navbar.html
+    └── feedback.html       # Navigation bar component
 ├── static/
 │   ├── css/
 │   │   └── styles.css    # Custom CSS styles
