@@ -2,131 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    
-    <!-- Page Title -->
     <title>Enjoy and Learn</title>
-
-    <!-- Internal CSS for styling the page -->
     <style>
-        /* Basic reset for body margin and setting default font */
+        /* Your existing CSS styles here */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
         }
-
-        /* Styling for the top section with a background image */
         .upper-section {
             height: 50vh;
-            background-image: url('../static/assets/img/mic-1132528_1280.jpg'); /* Replace with your image path */
-            background-size: cover; /* Ensure the image covers the entire section */
-            background-position: center; /* Center the background image */
+            background-image: url('../static/assets/img/mic-1132528_1280.jpg');
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
         }
-
-        /* Inner div inside the upper section, giving background opacity for better text visibility */
         .upper-section div {
-            background: rgba(0, 0, 0, 0.5); /* Adds transparency to background to make text pop */
+            background: rgba(0, 0, 0, 0.5);
             padding: 20px;
             border-radius: 10px;
         }
-
-        /* Middle section with a light background */
         .middle-section {
             padding: 50px;
             background-color: #f4f4f4;
             text-align: center;
         }
-
-        /* Lower section with dark background and white text */
         .lower-section {
             padding: 50px;
             background-color: #333;
             color: white;
             text-align: center;
         }
+        .feedback-section {
+    background-color: #f4f4f4; /* Light background to stand out */
+    padding: 50px 20px; /* Padding for spacing */
+    text-align: center; /* Center text */
+}
 
-        /* Container for the middle section */
-        .middle-section {
-            padding: 50px;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
+.feedback-container {
+    background: white; /* White background for form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    padding: 20px; /* Padding inside the form */
+    max-width: 500px; /* Max width for the form */
+    margin: 20px auto; /* Center form horizontally */
+}
 
-        /* Flex container for the cards in the middle section */
+.feedback-container h2 {
+    color: #333; /* Dark text for heading */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding for input */
+    margin: 10px 0; /* Space between inputs */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding */
+    cursor: pointer; /* Pointer on hover */
+    width: 100%; /* Full width */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.message {
+    color: green; /* Green text for success messages */
+    margin-top: 10px; /* Space above message */
+}
+
         .card-container {
             display: flex;
             justify-content: space-around;
             margin-top: 30px;
         }
-
-        /* Styling for each card in the middle section */
         .card {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 30%;
             text-align: left;
         }
-
-        /* Card heading styling */
         .card h3 {
             margin-top: 0;
         }
-
-        /* Responsive layout: adjust card container for smaller screens */
         @media (max-width: 768px) {
             .card-container {
-                flex-direction: column; /* Stack cards vertically on small screens */
+                flex-direction: column;
                 align-items: center;
             }
-
             .card {
-                width: 80%; /* Cards take up more width on small screens */
+                width: 80%;
                 margin-bottom: 20px;
             }
         }
-
-        /* Styling for the lower section (developer info) */
-        .lower-section {
-            padding: 50px;
-            background-color: #333;
-            color: white;
-            text-align: center;
-        }
-
-        /* Paragraph text in the lower section */
-        .lower-section p {
-            margin-bottom: 20px;
-            font-size: 16px;
-        }
-
-        /* Developer profile picture styling */
-        .profile-picture img {
-            width: 150px; /* Set the width of the profile picture */
-            height: 150px; /* Set the height of the profile picture */
-            border-radius: 50%; /* Makes the image circular */
-            object-fit: cover; /* Ensures the image maintains aspect ratio */
-            margin-bottom: 20px;
-        }
-
-        /* Styling for the social links in the developer section */
-        .social-links a {
-            color: #4CAF50; /* Green color for the links */
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        /* Hover effect for social links */
-        .social-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Footer section styling */
         .footer {
             background-color: #222;
             color: #fff;
@@ -139,89 +125,64 @@
         }
     </style>
 </head>
-
 <body>
-    <!-- Include the navigation bar -->
     {% include 'navbar.html' %}
 
-    <!-- Upper section with welcome message and link -->
     <section class="upper-section">
         <div>
             <h1>Welcome to Enjoy and Learn</h1>
             <p>Learning made fun and interactive for everyone!</p>
-            <a href="/learn" style="text-decoration: none;">Learn More</a> <!-- Link to learn more -->
+            <a href="/learn" style="text-decoration: none;">Learn More</a>
         </div>
     </section>
 
-    <!-- Middle section with description of the platform -->
     <section class="middle-section">
         <h2>About Us</h2>
-        <p>
-            Welcome to <strong>Enjoy and Learn</strong> – a platform where education meets entertainment! 
-            We believe that learning should be fun and engaging. Our goal is to provide a space where users 
-            can explore new knowledge while having fun with interactive resources, videos, and exciting challenges.
-        </p>
-        <p>
-            Whether you're looking to master a new skill, dive into educational content, or just enjoy a unique 
-            learning experience, <strong>Enjoy and Learn</strong> is designed to make your journey enjoyable. 
-            We offer a wide range of subjects to explore, from science and math to creative arts and beyond.
-        </p>
-
-        <!-- How to use the platform section with cards -->
+        <p>Welcome to <strong>Enjoy and Learn</strong>...</p>
         <h2>How To Use</h2>
         <div class="card-container">
-            <!-- Card for exploring content -->
             <div class="card">
                 <h3>Explore</h3>
-                <p>Browse songs in English, the latest and greatest, and just learn new things. New technology.</p>
+                <p>Browse songs in english...</p>
             </div>
-
-            <!-- Card for learning through lyrics -->
             <div class="card">
                 <h3>Learn</h3>
-                <p>See lyrics and word meanings. Just choose words that interest you.</p>
+                <p>See in lyrics and word meaning...</p>
             </div>
-
-            <!-- Card for enjoying music and learning -->
             <div class="card">
                 <h3>Enjoy</h3>
-                <p>Hear the music, enjoy, and read the meaning of the words in the song. You can also view the history of searched words.</p>
+                <p>Hear the music...</p>
             </div>
         </div>
     </section>
 
-    <!-- Lower section with developer information -->
+    <!-- New Section -->
     <section class="lower-section">
         <h2>About the Developer</h2>
-
-        <!-- Developer's profile picture -->
         <div class="profile-picture">
-            <img src="../static/assets/img/profile.jpg" alt="Developer's Profile Picture"> <!-- Replace with your image -->
+            <img src="../static/assets/img/profile.png" alt="Developer's Profile Picture">
         </div>
-    
-        <p>
-            Hi, I'm ISHIMWE ACHILLE, the creator of <strong>Enjoy and Learn</strong>. I am passionate about making learning more 
-            accessible and enjoyable for everyone. With a background in web development and educational technology, I aim 
-            to build platforms that merge education with entertainment, helping users gain knowledge in fun and interactive ways.
-        </p>
-    
-        <!-- Developer's social links -->
+        <p>Hi, I'm ISHIMWE ACHILLE, the creator of <strong>Enjoy and Learn</strong>...</p>
         <div class="social-links">
             <p>Connect with me on:</p>
-            <a href="https://github.com/Ishimwechille" target="_blank">GitHub</a> |
-            <a href="tel:+250787987816">Call</a> |
-            <a href="https://wa.me/250787987816" target="_blank">WhatsApp</a> |
-            <a href="https://www.linkedin.com/in/ishimwe-achille-25845b221/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/your-github" target="_blank">GitHub</a> |
+            <a href="tel:+1234567890">Call</a> |
+            <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
+            <a href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
         </div>
     </section>
+ <!-- Include the feedback form directly here -->
+ <section class="feedback-section">
+    <h3>Please Leave Your Feedback</h3>
+    {% include 'feedback.html' %}
+</section>
 
-    <!-- Footer section -->
     <footer class="footer">
         <p>&copy; <span id="current-year"></span> Enjoy and Learn. All rights reserved.</p>
     </footer>
-
-    <!-- JavaScript to dynamically update the current year in the footer -->
+    
     <script>
+        // JavaScript to dynamically update the current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
