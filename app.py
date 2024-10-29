@@ -187,7 +187,7 @@ def submit_feedback():
     msg = Message("New Feedback Received",
                   recipients=['niyokwizerajd123@gmail.com'])  # Your email
     msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}\nDate & Time: {date_time}"
-    mail.send(msg)  # Send the email
+    mail.send(msg)  # Send email to given receiver
     
     return jsonify({'message': 'Feedback submitted successfully!'})
 
