@@ -44,19 +44,16 @@ Enjoy and Learn is a web application designed to enhance the music-listening exp
 Setup Instructions
 Clone the repository:
 
-bash
-Copy code
-git clone https://github.com/your-username/enjoy-and-learn.git
+
+git clone [https://github.com/your-username/enjoy-and-learn.git](https://github.com/Ishimwechille/Enjoy-and-Learn)
 cd enjoy-and-learn
 Install dependencies: Make sure you have Python installed, then run:
 
-bash
-Copy code
+
 pip install -r requirements.txt
 Set up environment variables: Create a .env file with the following API keys (you may need to register for some):
 
-makefile
-Copy code
+
 SPOTIFY_CLIENT_ID=your_spotify_client_id
 SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
 YOUTUBE_API_KEY=your_youtube_api_key
@@ -66,19 +63,17 @@ EMAIL=your_email_address
 EMAIL_PASSWORD=your_email_password
 Initialize the database:
 
-bash
-Copy code
+
 flask shell
 >>> from app import db
 >>> db.create_all()
 Run the application:
 
-bash
-Copy code
-flask run
-The application will be accessible at http://127.0.0.1:5000.
 
-Usage
+flask run
+The application will be accessible at [http://127.0.0.1:5000.] (https://enjoy-and-learn.onrender.com/)
+
+#Usage
 Search for Songs: Use the search bar to find songs from Spotify.
 Play Songs on YouTube: Click on the desired song to play it via YouTube.
 Get Lyrics: View song lyrics, which are displayed automatically after selecting a song.
@@ -95,5 +90,5 @@ Deploy your application.
 Contributing
 Contributions are welcome! Please submit a pull request if you have a feature or fix in mind.
 
-License
+#License
 This project is licensed under the MIT License - see the LICENSE file for details.
