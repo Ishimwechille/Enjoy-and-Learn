@@ -1,0 +1,26 @@
+<form id="feedbackForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Feedback" required></textarea>
+    <button type="submit">Submit Feedback</button>
+</form>
+
+<script>
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    fetch('/submit_feedback', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+        this.reset();  // Reset the form after submission
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+</script>
