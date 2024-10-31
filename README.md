@@ -73,7 +73,8 @@ Run the application:
 flask run
 The application will be accessible at [http://127.0.0.1:5000.] (https://enjoy-and-learn.onrender.com/)
 
-##Usage
+## Usage
+
 Search for Songs: Use the search bar to find songs from Spotify.
 Play Songs on YouTube: Click on the desired song to play it via YouTube.
 Get Lyrics: View song lyrics, which are displayed automatically after selecting a song.
@@ -90,5 +91,5 @@ Deploy your application.
 Contributing
 Contributions are welcome! Please submit a pull request if you have a feature or fix in mind.
 
-##License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
