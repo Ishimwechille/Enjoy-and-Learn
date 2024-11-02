@@ -31,7 +31,8 @@ The project repository includes the following structure:
     - assets/images/: Folder containing all images
 
 ### 💡 Technology Stack:
-We chose to design the frontend with *HTML, **CSS, and **JavaScript* to ensure a visually appealing and interactive user experience.
+We chose to design the frontend with *HTML*, *CSS*, and *JavaScript* to ensure a visually appealing and interactive user experience.
+For Backend we used Python *Flask* and *sqlite db*
 
 ### 🌐 Features:
 - *Music Search and Playback*: Users can search for songs on Spotify and play them on YouTube.
