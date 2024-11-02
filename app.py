@@ -13,7 +13,7 @@ app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'ishimweachille2@gmail.com'  # Replace with your email
 app.config['MAIL_PASSWORD'] = 'zytk xlyp tpqh iapc'  # Replace with your email password
-app.config['MAIL_DEFAULT_SENDER'] = 'achilleishimwe886@gmail.com'  # Replace with your email
+app.config['MAIL_DEFAULT_SENDER'] = 'ishimweachille2@gmail.com'  # Replace with your email
 
 mail = Mail(app)  # Initialize Mail
 
@@ -185,7 +185,7 @@ def submit_feedback():
     
     # Send email with feedback details
     msg = Message("New Feedback Received",
-                  recipients=['niyokwizerajd123@gmail.com'])  # Your email
+                  recipients=['achilleishimwe886@gmail.com'])  # Your email
     msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}\nDate & Time: {date_time}"
     mail.send(msg)  # Send email to given receiver
     
